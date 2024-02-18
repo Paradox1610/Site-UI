@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Test</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="icon" href="favicon.png">
+    <link rel="stylesheet" href="newtest.css">
+</head>
+<body>
+<form class="form" id="ha-form">
+    <div class="input-group">
+    <input type="text" class="input" id="age">
+    <label class="placeholder">Age</label>
+    </div>
+    <div class="input-group">
+    <input type="text" class="input" id="Sex">
+    <label class="placeholder">Sex</label>
+    </div>
+    <div class="input-group">
+    <input type="text" class="input" id="cp">
+    <label class="placeholder">Chest Pain</label>
+    </div>
+    <div class="input-group">
+    <input type="text" class="input" id="rbp">
+    <label class="placeholder">Rest BP</label>
+    </div>
+    <div class="input-group">
+    <input type="text" class="input" id="chol">
+    <label class="placeholder">Serum Cholestrol</label>
+    </div>
+    <div class="input-group">
+    <input type="text" class="input" id="fbs">
+    <label class="placeholder">Fasting Blood sugar</label>
+    </div>
+    <div class="input-group">
+    <input type="text" class="input" id="restecg">
+    <label class="placeholder">Rest ECG</label>
+    </div>
+    <div class="input-group">
+    <input type="text" class="input" id="hrate">
+    <label class="placeholder">Heart rate</label>
+    </div>
+    <div class="input-group">
+    <input type="text" class="input" id="exangina">
+    <label class="placeholder">Exercise Angina</label>
+    </div>
+    <div class="input-group">
+        <input type="text" class="input" id="oldpeak">
+        <label class="placeholder">Old peak</label>
+    </div>
+    <div class="input-group">
+        <input type="text" class="input" id="slope">
+        <label class="placeholder">Slope</label>
+    </div>
+    <div class="input-group">
+        <input type="text" class="input" id="vessel">
+        <label class="placeholder">Major vessels</label>
+    </div>
+    <div class="input-group">
+        <input type="text" class="input" id="thal">
+        <label class="placeholder">Thal</label>
+    </div>
+    <div>
+        <button type="submit" class="btn">Submit</button>
+    </div>
+    
+</form>
+
+
+
+<script>
+
+    $("#ha-form").submit(async function(e){
+        e.preventDefault();
+        
+
+    input_arr = []
+    
+    $('input').each(function() {
+    var inputValue = $(this).val(); // Get the value of the current input field
+    input_arr.push(inputValue)
+    });
+
+    data = {"data_arr": input_arr}
+
+    res = await fetch("http://127.0.0.1:5000/ha",{
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    res = await res.json()
+
+    alert(res.res)
+
+    window.location.href = "/"
+
+    })
+
+
+</script>
+</body>
+</html>
