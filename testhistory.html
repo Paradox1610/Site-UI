@@ -5,13 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="icon" href="favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <title>Test History</title>
     <link rel="stylesheet" href="testhistory.css">
 </head>
 <body>
     <h1 class="heading">Test History</h1>
     <div class="table-div">
-        <table class="content-table">
+        <table class="content-table" id="content-table">
             <thead>
             <tr>
                 <th>Date Time</th>
@@ -31,22 +32,6 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>2024-02-16 18:06</td>
-                <td>62</td>
-                <td>0</td>
-                <td>140</td>
-                <td>54</td>
-                <td>25</td>
-                <td>1</td>
-                <td>6</td>
-                <td>76</td>
-                <td>45</td>
-                <td>67</td>
-                <td>345</td>
-                <td>76</td>
-                <td>4</td>
-            </tr>
             <!-- <tr>
                 <td>2024-02-17 18:06</td>
                 <td>42</td>
@@ -79,9 +64,27 @@
                 <td>66</td>
                 <td>3</td>
             </tr> -->
-//
             </tbody>
         </table>
     </div>
+
+<script>
+
+    $(document).ready(async() =>{
+        let data = await fetch("http://127.0.0.1:5000/show")
+        let res = await data.json()
+
+        console.log(res.data)
+
+
+        res.data.map((el) => {
+            $("#content-table").append(
+                `<tr><td>${el[0].slice(0,-10)}</td><td>${el[1]}</td><td>${el[2]}</td><td>${el[3]}</td><td>${el[4]}</td><td>${el[5]}</td><td>${el[6]}</td><td>${el[7]}</td><td>${el[8]}</td><td>${el[9]}</td><td>${el[10]}</td><td>${el[11]}</td><td>${el[12]}</td><td>${el[13]}</td></tr>` 
+            )
+        })
+    })
+
+</script>
+
 </body>
 </html>

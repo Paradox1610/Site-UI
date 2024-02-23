@@ -48,7 +48,7 @@ def store():
         data = json.loads(request.data)
         arr = []
 
-        for i in data["data"]: 
+        for i in data["data_arr"]: 
             arr.append(eval(i))
 
         input_data_with_date = [str(datetime.datetime.now())] + arr
@@ -68,7 +68,7 @@ def show():
         res = list(reader)
         csvfile.close()
         
-    return json.dumps({"data" : res})
+    return {"data" : res}
 
 
 app.run(port=5000, debug=True)

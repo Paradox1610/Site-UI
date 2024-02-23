@@ -96,6 +96,14 @@
     })
     res = await res.json()
 
+    await fetch("http://127.0.0.1:5000/store", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+
     alert(res.res)
 
     window.location.href = "/"
