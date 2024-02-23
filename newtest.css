@@ -6,7 +6,7 @@ body
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background-color: #04AA6D;
+    background-color:  #82eefd;
     font-family: 'Barlow Condensed', sans-serif;
 }
 .form
@@ -23,6 +23,7 @@ body
     flex-direction: column;
     flex-wrap: wrap;
     gap: 20px;
+}
 .input-group
 {
     position: relative;
@@ -34,7 +35,7 @@ body
     max-width: 300px;
     box-sizing: border-box;
     outline: none;
-    border: 1px solid #04AA6D;
+    border: 1px solid  	#281e5d;
 }
 .placeholder 
 {
@@ -47,16 +48,17 @@ body
     transition: 0.3s;
     pointer-events: none;
 }
-.input:focus + .placeholder
+input:not(:placeholder-shown) + .placeholder
 {
     top: -10px;
-    color: #04AA6D;
+    color: #241571;
     background-color: #fff;
+
 }
 
 .btn {
     margin-left: 20%;
-    background-color: #04AA6D;
+    background-color: #00008B;
     color: #fff;
     border-radius: 7px;
     height: 40px;
@@ -67,3 +69,10 @@ body
 .btn:focus{
     border: 2px solid #000;
 }
+
+.content {
+    max-width: 800px; /* Adjust according to your layout */
+    margin: 0 auto; /* Centers the content horizontally */
+}
+
+
